@@ -143,18 +143,8 @@ export const imagesRouter = express.Router();
 
 imagesRouter
   .route('/')
-  .post(checkUploadPathFolder, checkUploadPathFiles, uploadFile.single('image'), imagesController.uploadImage)
-
-imagesRouter
-  .route('/image')
   .post(checkUploadPathFolder, checkUploadPath, uploadImage.single('image'), imagesController.uploadImage)
 
-imagesRouter
-  .route('/avatar')
-  .post(checkUploadPathFolder, checkUploadPathAvatar, uploadAvatar.single('image'), imagesController.uploadImage)
-
-imagesRouter.get('/:fileNm', imagesController.getFileByName)
-imagesRouter.get('/image/:imgNm', imagesController.getImageByName)
-imagesRouter.get('/avatar/:imgNm', imagesController.getAvatarByName)
+imagesRouter.get('/:fileNm', imagesController.getImageByName)
 
 

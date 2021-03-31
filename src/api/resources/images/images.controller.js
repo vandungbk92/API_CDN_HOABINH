@@ -16,7 +16,7 @@ export default {
   },
 
   async getImageByName(req, res) {
-    let imgNm = req.params.imgNm;
+    let imgNm = req.params.fileNm;
     return res.sendFile(path.join(process.cwd(), './uploads/images/' + imgNm));
   },
 

@@ -5,8 +5,6 @@ import fs from 'fs';
 
 export const getFileRouter = express.Router();
 
-getFileRouter.get('/:fileNm', imagesController.getFileByName)
-getFileRouter.get('/image/:imgNm', imagesController.getImageByName)
-getFileRouter.get('/avatar/:imgNm', imagesController.getAvatarByName)
+getFileRouter.get('/:fileNm', imagesController.getImageByName)
 
 
