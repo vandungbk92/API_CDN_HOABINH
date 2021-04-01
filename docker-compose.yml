@@ -16,7 +16,7 @@ services:
       SERVICE_TAGS: "bvhoabinhfile"
     ports:
       - target: 3001
-        published: 5000
+        published: 4050
         mode: host
     volumes:
       - uploads:/usr/src/app/uploads
