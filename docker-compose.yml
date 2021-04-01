@@ -1,0 +1,26 @@
+version: "3.2"
+services:
+  bvhoabinhfile:
+    image: "registry.thinklabs.com.vn:5000/bvhoabinhfile:latest"
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.environment==development]
+      restart_policy:
+        condition: any
+    environment:
+      PORT: 5000
+      NODE_ENV: "production"
+      SERVICE_5000_NAME: "bvhoabinhfile"
+      SERVICE_NAME: "bvhoabinhfile"
+      SERVICE_TAGS: "bvhoabinhfile"
+    ports:
+      - target: 5000
+        published: 5000
+        mode: host
+    volumes:
+      - uploads:/usr/src/app/uploads
+
+volumes:
+  uploads:
+    driver: lizardfs
