@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(logger('dev'));
 }
 
-app.use('/api', restRouter);
+app.use('/', restRouter);
 
 
 app.use((req, res, next) => {
