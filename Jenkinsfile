@@ -17,18 +17,18 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvhoabinhfile ./thinklabsdev/bvhoabinhfileCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvhoabinhfile \
-                                    && docker service rm bvhoabinh_bvhoabinhfile || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvhoabinhfileCI/docker-compose.yml bvhoabinh \
+                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/danhuongcdn ./thinklabsdev/danhuongcdnCI/ \
+                                    && docker image push registry.thinklabs.com.vn:5000/danhuongcdn \
+                                    && docker service rm danhuong_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/danhuongcdnCI/docker-compose.yml danhuong \
                                     && rm -rf ./thinklabsdev/bvhoabinhfileCIB \
-                                    && mv ./thinklabsdev/bvhoabinhfileCI/ ./thinklabsdev/bvhoabinhfileCIB",
+                                    && mv ./thinklabsdev/danhuongcdnCI/ ./thinklabsdev/danhuongcdnCIB",
                                 execTimeout: 600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/bvhoabinhfileCI',
+                                remoteDirectory: './thinklabsdev/danhuongcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
