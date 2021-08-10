@@ -21,7 +21,7 @@ pipeline {
                                     && docker image push registry.thinklabs.com.vn:5000/danhuongcdn \
                                     && docker service rm danhuong_cdn || true \
                                     && docker stack deploy -c ./thinklabsdev/danhuongcdnCI/docker-compose.yml danhuong \
-                                    && rm -rf ./thinklabsdev/bvhoabinhfileCIB \
+                                    && rm -rf ./thinklabsdev/danhuongcdnCIB \
                                     && mv ./thinklabsdev/danhuongcdnCI/ ./thinklabsdev/danhuongcdnCIB",
                                 execTimeout: 600000,
                                 flatten: false,
