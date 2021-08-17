@@ -145,6 +145,13 @@ imagesRouter
   .route('/')
   .post(checkUploadPathFolder, checkUploadPath, uploadImage.single('image'), imagesController.uploadImage)
 
+
+imagesRouter
+    .route('/files')
+    .post(checkUploadPathFolder, checkUploadPathFiles, uploadFile.single('image'), imagesController.uploadImage)
+
+imagesRouter.get('/files/:fileNm', imagesController.getFileByName)
+
 imagesRouter.get('/:fileNm', imagesController.getImageByName)
 
 
