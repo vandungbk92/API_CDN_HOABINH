@@ -17,18 +17,18 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/danhuongcdn ./thinklabsdev/danhuongcdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/danhuongcdn \
+                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/phusanhaiphongcdn ./thinklabsdev/phusanhaiphongcdnCI/ \
+                                    && docker image push registry.thinklabs.com.vn:5000/phusanhaiphongcdn \
                                     && docker service rm danhuong_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/danhuongcdnCI/docker-compose.yml danhuong \
-                                    && rm -rf ./thinklabsdev/danhuongcdnCIB \
-                                    && mv ./thinklabsdev/danhuongcdnCI/ ./thinklabsdev/danhuongcdnCIB",
+                                    && docker stack deploy -c ./thinklabsdev/phusanhaiphongcdnCI/docker-compose.yml bvphusanphaiphong \
+                                    && rm -rf ./thinklabsdev/phusanhaiphongcdnCIB \
+                                    && mv ./thinklabsdev/phusanhaiphongcdnCI/ ./thinklabsdev/phusanhaiphongcdnCIB",
                                 execTimeout: 600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/danhuongcdnCI',
+                                remoteDirectory: './thinklabsdev/phusanhaiphongcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
