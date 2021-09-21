@@ -17,18 +17,18 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/phusanhaiphongcdn ./thinklabsdev/phusanhaiphongcdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/phusanhaiphongcdn \
-                                    && docker service rm danhuong_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/phusanhaiphongcdnCI/docker-compose.yml bvphusanphaiphong \
-                                    && rm -rf ./thinklabsdev/phusanhaiphongcdnCIB \
-                                    && mv ./thinklabsdev/phusanhaiphongcdnCI/ ./thinklabsdev/phusanhaiphongcdnCIB",
+                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn ./thinklabsdev/bvphusanhaiphongcdnCI/ \
+                                    && docker image push registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn \
+                                    && docker service rm bvphusanhaiphong_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/bvphusanhaiphongcdnCI/docker-compose.yml bvphusanphaiphong \
+                                    && rm -rf ./thinklabsdev/bvphusanhaiphongcdnCIB \
+                                    && mv ./thinklabsdev/bvphusanhaiphongcdnCI/ ./thinklabsdev/bvphusanhaiphongcdnCIB",
                                 execTimeout: 600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/phusanhaiphongcdnCI',
+                                remoteDirectory: './thinklabsdev/bvphusanhaiphongcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
