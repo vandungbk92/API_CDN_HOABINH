@@ -20,7 +20,7 @@ pipeline {
                                 execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn ./thinklabsdev/bvphusanhaiphongcdnCI/ \
                                     && docker image push registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn \
                                     && docker service rm bvphusanhaiphong_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvphusanhaiphongcdnCI/docker-compose.yml bvphusanphaiphong \
+                                    && docker stack deploy -c ./thinklabsdev/bvphusanhaiphongcdnCI/docker-compose.yml bvphusanhaiphong \
                                     && rm -rf ./thinklabsdev/bvphusanhaiphongcdnCIB \
                                     && mv ./thinklabsdev/bvphusanhaiphongcdnCI/ ./thinklabsdev/bvphusanhaiphongcdnCIB",
                                 execTimeout: 600000,
