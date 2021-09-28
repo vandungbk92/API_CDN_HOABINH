@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    stages {
+        stage('Init') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage ('Deployments') {
+            steps {
+                echo 'Deploying to Production environment...'
+                echo 'Copy project over SSH...'
+                sshPublisher(publishers: [
+                    sshPublisherDesc(
+                        configName: 'bvhoabinhvps',
+                        transfers:
+                            [sshTransfer(
+                                cleanRemote: false,
+                                excludes: '',
+                                execCommand: "docker build -t bvhoabinhcdn ./thinklabsdev/bvhoabinhcdnCI/ \
+                                    && docker service rm bvhoabinh_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/bvhoabinhcdnCI/docker-compose-public.yml bvhoabinh \
+                                    && rm -rf ./thinklabsdev/bvhoabinhcdnCIB \
+                                    && mv ./thinklabsdev/bvhoabinhcdnCI/ ./thinklabsdev/bvhoabinhcdnCIB",
+                                execTimeout: 600000,
+                                flatten: false,
+                                makeEmptyDirs: false,
+                                noDefaultExcludes: false,
+                                patternSeparator: '[, ]+',
+                                remoteDirectory: './thinklabsdev/bvhoabinhcdnCI',
+                                remoteDirectorySDF: false,
+                                removePrefix: '',
+                                sourceFiles: '*, src/'
+                            )],
+                        usePromotionTimestamp: false,
+                        useWorkspaceInPromotion: false,
+                        verbose: false
+                    )
+                ])
+            }
+        }
+    }
+}
