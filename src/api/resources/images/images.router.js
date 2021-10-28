@@ -151,6 +151,7 @@ imagesRouter
     .post(checkUploadPathFolder, checkUploadPathFiles, uploadFile.single('image'), imagesController.uploadImage)
 
 imagesRouter.get('/files/:fileNm', imagesController.getFileByName)
+imagesRouter.get('/hissync', imagesController.getFileByNameHisSync)
 
 imagesRouter.get('/:fileNm', imagesController.getImageByName)
 

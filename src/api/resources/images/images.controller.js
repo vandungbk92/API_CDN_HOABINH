@@ -15,6 +15,11 @@ export default {
     return res.sendFile(path.join(process.cwd(), './uploads/files/' + fileNm));
   },
 
+  async getFileByNameHisSync(req, res) {
+    let fileNm = req.query.fileNm;
+    return res.sendFile(path.join(process.cwd(), './uploads/hissync/' + fileNm));
+  },
+
   async getImageByName(req, res) {
     let imgNm = req.params.fileNm;
     return res.sendFile(path.join(process.cwd(), './uploads/images/' + imgNm));
