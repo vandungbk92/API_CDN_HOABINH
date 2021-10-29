@@ -20,7 +20,10 @@ services:
         mode: host
     volumes:
       - uploads:/usr/src/app/uploads
+      - medicalreportHisSyncResource:/usr/src/app/hissync
 
 volumes:
   uploads:
+    driver: lizardfs
+  medicalreportHisSyncResource:
     driver: lizardfs

@@ -19,8 +19,8 @@ pipeline {
                                 excludes: '',
                                 execCommand: "docker build -t registry.thinklabs.com.vn:5000/danhuongcdn ./thinklabsdev/danhuongcdnCI/ \
                                     && docker image push registry.thinklabs.com.vn:5000/danhuongcdn \
-                                    && docker service rm danhuong_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/danhuongcdnCI/docker-compose.yml danhuong \
+                                    && docker service rm danhuong-tclinic_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/danhuongcdnCI/docker-compose.yml danhuong-tclinic \
                                     && rm -rf ./thinklabsdev/danhuongcdnCIB \
                                     && mv ./thinklabsdev/danhuongcdnCI/ ./thinklabsdev/danhuongcdnCIB",
                                 execTimeout: 600000,
