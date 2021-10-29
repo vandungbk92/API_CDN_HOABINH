@@ -17,7 +17,7 @@ export default {
 
   async getFileByNameHisSync(req, res) {
     let fileNm = req.query.fileNm;
-    return res.sendFile(path.join(process.cwd(), './uploads/hissync/' + fileNm));
+    return res.sendFile(path.join(process.cwd(), './hissync/' + fileNm));
   },
 
   async getImageByName(req, res) {
