@@ -152,6 +152,11 @@ imagesRouter
 
 imagesRouter.get('/files/:fileNm', imagesController.getFileByName)
 imagesRouter.get('/hissync', imagesController.getFileByNameHisSync)
+
+imagesRouter.get('/hissync-cdha', imagesController.getFileByNameHisSyncCDHA)
+
+imagesRouter.get('/hissync-file', imagesController.getListFileNameCDHA)
+
 imagesRouter.get('/hissync-test', imagesController.getFileByNameHisSyncTest)
 
 imagesRouter.get('/:fileNm', imagesController.getImageByName)

@@ -20,36 +20,15 @@ export default {
   },
 
   async getFileByNameHisSync(req, res) {
-    try{
-      let fileNm = req.query.fileNm;
-      return res.sendFile(path.join(process.cwd(), './hissync/' + fileNm));
-    }catch (e) {
-      return res.status(500).json({success: false, message: 'Lỗi truy vấn dữ liệu'})
-    }
-
-  },
-
-  async getFileByNameHisSyncCDHA(req, res) {
-    try{
-      let fileNm = req.query.fileNm;
-      let makcb = req.query.makcb;
-      if(!fileNm || !makcb) return res.status(400).json({success: false, message: 'Lỗi truy vấn dữ liệu'})
-
-      return res.sendFile(path.join(process.cwd(), './hissync/HinhAnh/' + makcb + '/' + fileNm));
-    }catch (e) {
-      return res.status(500).json({success: false, message: 'Lỗi truy vấn dữ liệu'})
-    }
-
-  },
-
-  async getListFileNameCDHA(req, res) {
     try {
       let makcb = req.query.makcb;
       let urlFolder = path.join(process.cwd(), './hissync/HinhAnh/' + makcb);
+
       if (fs.existsSync(urlFolder) && makcb) {
         let names;
         let image = [];
         let video = [];
+
         names = await readdir(urlFolder);
         names.forEach(filename => {
           let fileExt = filename.split('.').pop();
@@ -63,6 +42,7 @@ export default {
         })
         return res.json({image: image, video: video})
       }
+
       return res.json({image: [], video: []})
     }catch (e) {
       console.log(e)
