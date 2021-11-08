@@ -42,6 +42,19 @@ export default {
 
   },
 
+  async getFileByNameHisSyncFile(req, res) {
+    try{
+      let {makcb, fileNm} = req.params;
+
+      if(!fileNm || !makcb) return res.status(400).json({success: false, message: 'Lỗi truy vấn dữ liệu'})
+
+      return res.sendFile(path.join(process.cwd(), './hissync/HinhAnh/' + makcb + '/' + fileNm));
+    }catch (e) {
+      return res.status(500).json({success: false, message: 'Lỗi truy vấn dữ liệu'})
+    }
+
+  },
+
   async getListFileNameCDHA(req, res) {
     try {
       let makcb = req.query.makcb;
