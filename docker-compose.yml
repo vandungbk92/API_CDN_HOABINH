@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   cdn:
-    image: "registry.thinklabs.com.vn:5000/bvquoctethainguyencdn:latest"
+    image: "registry.thinklabs.com.vn:5000/bvyenbinhcdn:latest"
     deploy:
       replicas: 1
       placement:
@@ -11,12 +11,12 @@ services:
     environment:
       PORT: 3001
       NODE_ENV: "production"
-      SERVICE_3001_NAME: "bvquoctethainguyencdn"
-      SERVICE_NAME: "bvquoctethainguyencdn"
-      SERVICE_TAGS: "bvquoctethainguyencdn"
+      SERVICE_3001_NAME: "bvyenbinhcdn"
+      SERVICE_NAME: "bvyenbinhcdn"
+      SERVICE_TAGS: "bvyenbinhcdn"
     ports:
       - target: 3001
-        published: 4030
+        published: 4033
         mode: host
     volumes:
       - uploads:/usr/src/app/uploads
