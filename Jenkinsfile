@@ -17,18 +17,18 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvquoctethainguyencdn ./thinklabsdev/bvquoctethainguyencdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvquoctethainguyencdn \
-                                    && docker service rm bvquoctethainguyen_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvquoctethainguyencdnCI/docker-compose.yml bvquoctethainguyen\
-                                    && rm -rf ./thinklabsdev/bvquoctethainguyencdnCIB \
-                                    && mv ./thinklabsdev/bvquoctethainguyencdnCI/ ./thinklabsdev/bvquoctethainguyencdnCIB",
+                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvyenbinhcdn ./thinklabsdev/bvyenbinhcdnCI/ \
+                                    && docker image push registry.thinklabs.com.vn:5000/bvyenbinhcdn \
+                                    && docker service rm bvyenbinh_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/bvyenbinhcdnCI/docker-compose.yml bvyenbinh\
+                                    && rm -rf ./thinklabsdev/bvyenbinhcdnCIB \
+                                    && mv ./thinklabsdev/bvyenbinhcdnCI/ ./thinklabsdev/bvyenbinhcdnCIB",
                                 execTimeout: 600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/bvquoctethainguyencdnCI',
+                                remoteDirectory: './thinklabsdev/bvyenbinhcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
