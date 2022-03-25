@@ -18,18 +18,18 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvducgiangcdn ./thinklabsdev/bvducgiangcdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvducgiangcdn \
-                                    && docker service rm bvducgiang_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvducgiangcdnCI/docker-compose.yml bvducgiang \
-                                    && rm -rf ./thinklabsdev/bvducgiangcdnCIB \
-                                    && mv ./thinklabsdev/bvducgiangcdnCI/ ./thinklabsdev/bvducgiangcdnCIB",
+                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvducminhcdn ./thinklabsdev/bvducminhcdnCI/ \
+                                    && docker image push registry.thinklabs.com.vn:5000/bvducminhcdn \
+                                    && docker service rm bvducminh_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/bvducminhcdnCI/docker-compose.yml bvducminh \
+                                    && rm -rf ./thinklabsdev/bvducminhcdnCIB \
+                                    && mv ./thinklabsdev/bvducminhcdnCI/ ./thinklabsdev/bvducminhcdnCIB",
                                 execTimeout: 1200000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/bvducgiangcdnCI',
+                                remoteDirectory: './thinklabsdev/bvducminhcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
