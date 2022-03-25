@@ -4,6 +4,7 @@ pipeline {
         stage('Init') {
             steps {
                 echo 'Testing..'
+                telegramSend(message: 'Building job: $PROJECT_NAME ... - Link: $BUILD_URL', chatId: -721410839)
             }
         }
         stage ('Deployments') {
@@ -17,18 +18,18 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn ./thinklabsdev/bvphusanhaiphongcdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn \
-                                    && docker service rm bvphusanhaiphong_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvphusanhaiphongcdnCI/docker-compose.yml bvphusanhaiphong \
-                                    && rm -rf ./thinklabsdev/bvphusanhaiphongcdnCIB \
-                                    && mv ./thinklabsdev/bvphusanhaiphongcdnCI/ ./thinklabsdev/bvphusanhaiphongcdnCIB",
-                                execTimeout: 600000,
+                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvducgiangcdn ./thinklabsdev/bvducgiangcdnCI/ \
+                                    && docker image push registry.thinklabs.com.vn:5000/bvducgiangcdn \
+                                    && docker service rm bvducgiang_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/bvducgiangcdnCI/docker-compose.yml bvducgiang \
+                                    && rm -rf ./thinklabsdev/bvducgiangcdnCIB \
+                                    && mv ./thinklabsdev/bvducgiangcdnCI/ ./thinklabsdev/bvducgiangcdnCIB",
+                                execTimeout: 1200000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/bvphusanhaiphongcdnCI',
+                                remoteDirectory: './thinklabsdev/bvducgiangcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
@@ -38,6 +39,7 @@ pipeline {
                         verbose: false
                     )
                 ])
+                telegramSend(message: 'Build - $PROJECT_NAME – # $BUILD_NUMBER – STATUS: $BUILD_STATUS!', chatId: -721410839)
             }
         }
     }
