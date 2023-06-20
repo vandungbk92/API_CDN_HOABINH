@@ -1,26 +1,22 @@
 version: "3.2"
+
 services:
   cdn:
-    image: "registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn:latest"
+    image: "bvphusanhaiphongcdn:latest"
     deploy:
       replicas: 1
-      placement:
-        constraints: [node.labels.environment==development]
       restart_policy:
         condition: any
     environment:
       PORT: 3001
       NODE_ENV: "production"
-      SERVICE_3001_NAME: "bvphusanhaiphongcdn"
-      SERVICE_NAME: "bvphusanhaiphongcdn"
-      SERVICE_TAGS: "bvphusanhaiphongcdn"
     ports:
       - target: 3001
-        published: 4026
+        published: 3001
         mode: host
     volumes:
       - uploads:/usr/src/app/uploads
 
 volumes:
   uploads:
-    driver: lizardfs
+    driver: local
