@@ -22,7 +22,7 @@ pipeline {
                                     && docker stack deploy -c ./thinklabsdev/bvphusanhaiphongcdnCI/docker-compose.yml bvphusanhaiphong \
                                     && rm -rf ./thinklabsdev/bvphusanhaiphongcdnCIB \
                                     && mv ./thinklabsdev/bvphusanhaiphongcdnCI/ ./thinklabsdev/bvphusanhaiphongcdnCIB",
-                                execTimeout: 600000,
+                                execTimeout: 3600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
