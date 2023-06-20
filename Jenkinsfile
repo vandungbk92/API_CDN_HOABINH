@@ -12,13 +12,12 @@ pipeline {
                 echo 'Copy project over SSH...'
                 sshPublisher(publishers: [
                     sshPublisherDesc(
-                        configName: 'swarm1',
+                        configName: 'pshp',
                         transfers:
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn ./thinklabsdev/bvphusanhaiphongcdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvphusanhaiphongcdn \
+                                execCommand: "docker build -t bvphusanhaiphongcdn ./thinklabsdev/bvphusanhaiphongcdnCI/ \
                                     && docker service rm bvphusanhaiphong_cdn || true \
                                     && docker stack deploy -c ./thinklabsdev/bvphusanhaiphongcdnCI/docker-compose.yml bvphusanhaiphong \
                                     && rm -rf ./thinklabsdev/bvphusanhaiphongcdnCIB \
