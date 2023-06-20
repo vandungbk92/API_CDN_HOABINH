@@ -11,9 +11,7 @@ services:
       PORT: 3001
       NODE_ENV: "production"
     ports:
-      - target: 3001
-        published: 3001
-        mode: host
+      - 3001:3001
     volumes:
       - uploads:/usr/src/app/uploads
 
