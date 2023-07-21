@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14.20.1-alpine3.16
 RUN apk update && apk upgrade && apk add --no-cache git
 
 WORKDIR /usr/src/app
