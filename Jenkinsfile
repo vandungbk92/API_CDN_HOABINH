@@ -12,18 +12,17 @@ pipeline {
                 echo 'Copy project over SSH...'
                 sshPublisher(publishers: [
                     sshPublisherDesc(
-                        configName: 'swarm1',
+                        configName: 'quoctethainguyen68',
                         transfers:
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvquoctethainguyencdn ./thinklabsdev/bvquoctethainguyencdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvquoctethainguyencdn \
+                                execCommand: "docker build -t bvquoctethainguyencdn ./thinklabsdev/bvquoctethainguyencdnCI/ \
                                     && docker service rm bvquoctethainguyen_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvquoctethainguyencdnCI/docker-compose.yml bvquoctethainguyen\
+                                    && docker stack deploy -c ./thinklabsdev/bvquoctethainguyencdnCI/docker-compose.yml bvquoctethainguyen \
                                     && rm -rf ./thinklabsdev/bvquoctethainguyencdnCIB \
                                     && mv ./thinklabsdev/bvquoctethainguyencdnCI/ ./thinklabsdev/bvquoctethainguyencdnCIB",
-                                execTimeout: 600000,
+                                execTimeout: 3600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
@@ -35,7 +34,7 @@ pipeline {
                             )],
                         usePromotionTimestamp: false,
                         useWorkspaceInPromotion: false,
-                        verbose: false
+                        verbose: true
                     )
                 ])
             }
