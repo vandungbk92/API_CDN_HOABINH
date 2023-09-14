@@ -19,7 +19,7 @@ pipeline {
                                 excludes: '',
                                 execCommand: "docker build -t pkmediboxcdn ./thinklabsdev/pkmediboxcdnCI/ \
                                     && docker service rm pkmedibox_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/pkmediboxCI/compose-compose.yml pkmedibox \
+                                    && docker stack deploy -c ./thinklabsdev/pkmediboxCI/docker-compose.yml pkmedibox \
                                     && rm -rf ./thinklabsdev/pkmediboxcdnCIB \
                                     && mv ./thinklabsdev/pkmediboxcdnCI/ ./thinklabsdev/pkmediboxcdnCIB",
                                 execTimeout: 600000,
