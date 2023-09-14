@@ -12,22 +12,22 @@ pipeline {
                 echo 'Copy project over SSH...'
                 sshPublisher(publishers: [
                     sshPublisherDesc(
-                        configName: 'server01',
+                        configName: 'medibox01',
                         transfers:
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t pktunganhcdn ./thinklabsdev/pktunganhcdnCI/ \
-                                    && docker service rm pktunganh_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/pktunganhcdnCI/compose-server-tunganh.yml pktunganh \
-                                    && rm -rf ./thinklabsdev/pktunganhcdnCIB \
-                                    && mv ./thinklabsdev/pktunganhcdnCI/ ./thinklabsdev/pktunganhcdnCIB",
+                                execCommand: "docker build -t pkmediboxcdn ./thinklabsdev/pkmediboxcdnCI/ \
+                                    && docker service rm pkmedibox_cdn || true \
+                                    && docker stack deploy -c ./thinklabsdev/pkmediboxCI/compose-compose.yml pkmedibox \
+                                    && rm -rf ./thinklabsdev/pkmediboxcdnCIB \
+                                    && mv ./thinklabsdev/pkmediboxcdnCI/ ./thinklabsdev/pkmediboxcdnCIB",
                                 execTimeout: 600000,
                                 flatten: false,
                                 makeEmptyDirs: false,
                                 noDefaultExcludes: false,
                                 patternSeparator: '[, ]+',
-                                remoteDirectory: './thinklabsdev/pktunganhcdnCI',
+                                remoteDirectory: './thinklabsdev/pkmediboxcdnCI',
                                 remoteDirectorySDF: false,
                                 removePrefix: '',
                                 sourceFiles: '*, src/'
