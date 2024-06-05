@@ -19,7 +19,7 @@ pipeline {
                                 excludes: '',
                                 execCommand: "docker build -t bvyenbinhcdn ./thinklabsdev/bvyenbinhcdnCI/ \
                                     && docker service rm bvyenbinh_cdn || true \
-                                    && docker stack deploy -c ./thinklabsdev/bvyenbinhcdnCI/docker-compose.yml bvyenbinh \
+                                    && docker stack deploy -c ./thinklabsdev/bvyenbinhcdnCI/docker-compose-svyb.yml bvyenbinh \
                                     && rm -rf ./thinklabsdev/bvyenbinhcdnCIB \
                                     && mv ./thinklabsdev/bvyenbinhcdnCI/ ./thinklabsdev/bvyenbinhcdnCIB",
                                 execTimeout: 3600000,
