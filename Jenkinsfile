@@ -17,8 +17,7 @@ pipeline {
                             [sshTransfer(
                                 cleanRemote: false,
                                 excludes: '',
-                                execCommand: "docker build -t registry.thinklabs.com.vn:5000/bvyenbinhcdn ./thinklabsdev/bvyenbinhcdnCI/ \
-                                    && docker image push registry.thinklabs.com.vn:5000/bvyenbinhcdn \
+                                execCommand: "docker build -t bvyenbinhcdn ./thinklabsdev/bvyenbinhcdnCI/ \
                                     && docker service rm bvyenbinh_cdn || true \
                                     && docker stack deploy -c ./thinklabsdev/bvyenbinhcdnCI/docker-compose.yml bvyenbinh\
                                     && rm -rf ./thinklabsdev/bvyenbinhcdnCIB \
